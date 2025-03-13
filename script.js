@@ -20,6 +20,7 @@ generateEmailsButton.addEventListener('click', function() {
     isExecuted = false;
   };
 
+  disableButtonForBuffer(generateEmailsButton);
   addNewRandomEmailToList(emailList, 10);
 });
 
@@ -41,5 +42,15 @@ function addNewRandomEmailToList(listElement, amount) {
     requests.push(request);
   };
 
-  Promise.all(requests).then(() => listElement.innerHTML = elementsToAdd);
+  Promise.all(requests).then(() => {
+    listElement.innerHTML = elementsToAdd
+    disableButtonForBuffer(generateEmailsButton);
+  });
+};
+
+
+function disableButtonForBuffer(button) {
+  button.disabled ? button.disabled = false : button.disabled = true;
+
+  console.log(button.disabled);
 };
