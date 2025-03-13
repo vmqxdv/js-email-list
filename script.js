@@ -6,7 +6,7 @@
  * 
  */
 
-const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
+const endpoint = 'https://flynn.boolean.careers/exercises/addddpi/random/mail';
 const emailList = document.getElementById('email-list');
 const generateEmailsButton = document.getElementById('generate-emails');
 const cardTitle = document.querySelector('.card-title');
@@ -26,31 +26,30 @@ generateEmailsButton.addEventListener('click', function() {
 
 
 function addNewRandomEmailToList(listElement, amount) {
-  let elementsToAdd = '';
-  const requests = [];
+  try {
+    let elementsToAdd = '';
+    const requests = [];
 
-  for (let i = 0; i < amount; i++) {
-    const request = axios.get(endpoint)
-      .then(result => {
-        const { response: newEmail } = result.data;
-        elementsToAdd += `<li class="list-group-item">${newEmail}</li>`;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    for (let i = 0; i < amount; i++) {
+      const request = axios.get(endpoint)
+        .then(result => {
+          const { response: newEmail } = result.data;
+          elementsToAdd += `<li class="list-group-item">${newEmail}</li>`;
+        })
 
-    requests.push(request);
+      requests.push(request);
+    };
+
+    Promise.all(requests).then(() => {
+      listElement.innerHTML = elementsToAdd
+      disableButtonForBuffer(generateEmailsButton);
+    });
+  } catch (error) {
+    console.log(err);
   };
-
-  Promise.all(requests).then(() => {
-    listElement.innerHTML = elementsToAdd
-    disableButtonForBuffer(generateEmailsButton);
-  });
 };
 
 
 function disableButtonForBuffer(button) {
   button.disabled ? button.disabled = false : button.disabled = true;
-
-  console.log(button.disabled);
 };
