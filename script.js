@@ -15,18 +15,21 @@ addNewRandomEmailToList(emailList, 10);
 
 
 function addNewRandomEmailToList(listElement, amount) {
-  for (let i = 0; i < amount; i++) {
+  let elementsToAdd = '';
+  const requests = [];
 
-    axios.get(endpoint)
+  for (let i = 0; i < amount; i++) {
+    const request = axios.get(endpoint)
       .then(result => {
         const { response: newEmail } = result.data;
-
-        const newEmailElement = `<li>${newEmail}</li>`;
-        
-        listElement.innerHTML += newEmailElement;
-      }).catch(err => {
+        elementsToAdd += `<li>${newEmail}</li>`;
+      })
+      .catch(err => {
         console.log(err);
       });
-  
-  }
+
+    requests.push(request);
+  };
+
+  Promise.all(requests).then(() => listElement.innerHTML = elementsToAdd);
 };
