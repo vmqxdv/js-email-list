@@ -12,6 +12,7 @@ const cardTitle = document.querySelector('.card-title');
 const emailList = document.getElementById('email-list');
 const generateEmailsButton = document.getElementById('generate-emails');
 const errMessage = document.getElementById('error-message');
+const errButton = document.getElementById('reload-page');
 
 let isFirstClick = true;
 
@@ -26,6 +27,9 @@ generateEmailsButton.addEventListener('click', function() {
   addNewRandomEmailToList(emailList, 10);
 });
 
+errButton.addEventListener('click', function() {
+  window.location.reload();
+});
 
 function addNewRandomEmailToList(listElement, amount) {
   let elementsToAdd = '';
