@@ -13,6 +13,8 @@ axios.get(endpoing)
   .then(result => {
 
     const { data } = result;
-    console.log(data);
+
     
+  }).catch(err => {
+    console.log(err);
   });
