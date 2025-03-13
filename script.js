@@ -12,9 +12,11 @@ const emailList = document.getElementById('email-list');
 axios.get(endpoing)
   .then(result => {
 
-    const { data } = result;
+    const { response: newEmail } = result.data;
 
-    
+    const newEmailElement = `<li>${newEmail}</li>`;
+    emailList.innerHTML += newEmailElement;
+
   }).catch(err => {
     console.log(err);
   });
