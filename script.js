@@ -8,7 +8,6 @@
 
 const endpoint = 'https://flynn.boolean.careers/exercises/addddpi/random/mail';
 const card = document.querySelector('.card');
-console.log(card);
 const cardTitle = document.querySelector('.card-title');
 const emailList = document.getElementById('email-list');
 const generateEmailsButton = document.getElementById('generate-emails');
@@ -41,7 +40,8 @@ function addNewRandomEmailToList(listElement, amount) {
       .catch(err => {
         console.log(err);
 
-
+        card.classList.add('d-none');
+        errMessage.classList.remove('d-none');
       });
 
     requests.push(request);
