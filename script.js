@@ -12,6 +12,8 @@ const generateEmailsButton = document.getElementById('generate-emails');
 
 
 generateEmailsButton.addEventListener('click', function() {
+  generateEmailsButton.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Aggiorna';
+
   addNewRandomEmailToList(emailList, 10);
 });
 
