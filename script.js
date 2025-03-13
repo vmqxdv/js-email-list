@@ -9,10 +9,16 @@
 const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
 const emailList = document.getElementById('email-list');
 const generateEmailsButton = document.getElementById('generate-emails');
+const cardTitle = document.querySelector('.card-title');
 
+let isFirstClick = true;
 
 generateEmailsButton.addEventListener('click', function() {
-  generateEmailsButton.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Aggiorna';
+  if (isFirstClick) {
+    cardTitle.classList.add('d-none');
+    generateEmailsButton.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Aggiorna';
+    isExecuted = false;
+  };
 
   addNewRandomEmailToList(emailList, 10);
 });
