@@ -6,7 +6,7 @@
  * 
  */
 
-const endpoint = 'https://flynn.boolean.careers/exercises/addddpi/random/mail';
+const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
 const card = document.querySelector('.card');
 const cardTitle = document.querySelector('.card-title');
 const emailList = document.getElementById('email-list');
