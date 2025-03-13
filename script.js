@@ -26,27 +26,26 @@ generateEmailsButton.addEventListener('click', function() {
 
 
 function addNewRandomEmailToList(listElement, amount) {
-  try {
-    let elementsToAdd = '';
-    const requests = [];
+  let elementsToAdd = '';
+  const requests = [];
 
-    for (let i = 0; i < amount; i++) {
-      const request = axios.get(endpoint)
-        .then(result => {
-          const { response: newEmail } = result.data;
-          elementsToAdd += `<li class="list-group-item">${newEmail}</li>`;
-        })
+  for (let i = 0; i < amount; i++) {
+    const request = axios.get(endpoint)
+      .then(result => {
+        const { response: newEmail } = result.data;
+        elementsToAdd += `<li class="list-group-item">${newEmail}</li>`;
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-      requests.push(request);
-    };
-
-    Promise.all(requests).then(() => {
-      listElement.innerHTML = elementsToAdd
-      disableButtonForBuffer(generateEmailsButton);
-    });
-  } catch (error) {
-    console.log(err);
+    requests.push(request);
   };
+
+  Promise.all(requests).then(() => {
+    listElement.innerHTML = elementsToAdd
+    disableButtonForBuffer(generateEmailsButton);
+  });
 };
 
 
