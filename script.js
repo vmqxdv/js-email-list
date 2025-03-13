@@ -6,17 +6,27 @@
  * 
  */
 
-const endpoing = 'https://flynn.boolean.careers/exercises/api/random/mail';
+const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
 const emailList = document.getElementById('email-list');
 
-axios.get(endpoing)
-  .then(result => {
+addNewRandomEmailToList(emailList, 10);
 
-    const { response: newEmail } = result.data;
 
-    const newEmailElement = `<li>${newEmail}</li>`;
-    emailList.innerHTML += newEmailElement;
 
-  }).catch(err => {
-    console.log(err);
-  });
+
+function addNewRandomEmailToList(listElement, amount) {
+  for (let i = 0; i < amount; i++) {
+
+    axios.get(endpoint)
+      .then(result => {
+        const { response: newEmail } = result.data;
+
+        const newEmailElement = `<li>${newEmail}</li>`;
+        
+        listElement.innerHTML += newEmailElement;
+      }).catch(err => {
+        console.log(err);
+      });
+  
+  }
+};
