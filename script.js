@@ -24,7 +24,7 @@ function addNewRandomEmailToList(listElement, amount) {
     const request = axios.get(endpoint)
       .then(result => {
         const { response: newEmail } = result.data;
-        elementsToAdd += `<li>${newEmail}</li>`;
+        elementsToAdd += `<li class="list-group-item">${newEmail}</li>`;
       })
       .catch(err => {
         console.log(err);
