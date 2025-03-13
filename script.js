@@ -7,11 +7,12 @@
  */
 
 const endpoint = 'https://flynn.boolean.careers/exercises/addddpi/random/mail';
+const card = document.querySelector('.card');
+console.log(card);
+const cardTitle = document.querySelector('.card-title');
 const emailList = document.getElementById('email-list');
 const generateEmailsButton = document.getElementById('generate-emails');
-const cardTitle = document.querySelector('.card-title');
 const errMessage = document.getElementById('error-message');
-console.log(errMessage);
 
 let isFirstClick = true;
 
@@ -39,6 +40,8 @@ function addNewRandomEmailToList(listElement, amount) {
       })
       .catch(err => {
         console.log(err);
+
+
       });
 
     requests.push(request);
