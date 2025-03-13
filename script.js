@@ -7,6 +7,10 @@
  */
 
 const endpoing = 'https://flynn.boolean.careers/exercises/api/random/mail';
+const emailList = document.getElementById('email-list');
+console.log(emailList);
 
 axios.get(endpoing)
-  .then(result => console.log(result));
+  .then(result => {
+
+  });
