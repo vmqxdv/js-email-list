@@ -10,8 +10,10 @@ const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
 const emailList = document.getElementById('email-list');
 const generateEmailsButton = document.getElementById('generate-emails');
 
-addNewRandomEmailToList(emailList, 10);
 
+generateEmailsButton.addEventListener('click', function() {
+  addNewRandomEmailToList(emailList, 10);
+});
 
 
 function addNewRandomEmailToList(listElement, amount) {
